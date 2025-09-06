@@ -45,6 +45,31 @@ summary = merged_df.groupby('employee_id').agg(
 summary['rendered_exactly_pct'] = (summary['rendered_exactly_count'] / summary['total_appointments']) * 100
 
 summary = summary.reset_index()
+high_noncompliance_count = (summary['rendered_exactly_pct'] > 50).sum()
 
+summary_with_zone = pd.merge(summary, employee_df[['employee_id', 'employee_zone']], on='employee_id', how='left')
+
+total_employees_zone = employee_df.groupby('employee_zone')['employee_id'].nunique().reset_index()
+total_employees_zone.columns = ['employee_zone', 'total_employees']
+
+high_noncomp_zone = summary_with_zone[summary_with_zone['rendered_exactly_pct'] > 50].groupby('employee_zone')['employee_id'].nunique().reset_index()
+high_noncomp_zone.columns = ['employee_zone', 'employees_with_high_noncompliance']
+
+zone_summary = pd.merge(total_employees_zone, high_noncomp_zone, on='employee_zone', how='left').fillna(0)
+
+zone_summary['high_noncompliance_pct'] = (zone_summary['employees_with_high_noncompliance'] / zone_summary['total_employees']) * 100
+zone_summary['high_noncompliance_pct'] = zone_summary['high_noncompliance_pct'].round(2)
+
+print(f"\nNumber of employees with >50% rendered exactly: {high_noncompliance_count}")
 print(summary)
+print("\nRendered Exactly >50% by Employee Zone:")
+print(zone_summary)
 
+
+output_path = r'C:\Users\madel\Desktop\Data Portfolio\Labor Law Compliance\labor_law_compliance_report.xlsx'
+
+with pd.ExcelWriter(output_path) as writer:
+    summary.to_excel(writer, sheet_name='Employee Rendered Summary', index=False)
+    zone_summary.to_excel(writer, sheet_name='Zone Rendered Compliance', index=False)
+
+print(f"Exported results to {output_path}")

@@ -1,6 +1,6 @@
 import pandas as pd
 
-file_path = r'C:\Users\madel\Documents\labor_law_01-2025.xlsx'
+file_path = r'C:\Users\madel\Desktop\Data Portfolio\Labor Law Compliance\labor_law_01-2025.xlsx'
 schedule_df = pd.read_excel(file_path, sheet_name='schedule_data')
 employee_df = pd.read_excel(file_path, sheet_name='employee_data')
 
@@ -47,3 +47,4 @@ summary['rendered_exactly_pct'] = (summary['rendered_exactly_count'] / summary['
 summary = summary.reset_index()
 
 print(summary)
+

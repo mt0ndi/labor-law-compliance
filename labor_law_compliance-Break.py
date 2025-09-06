@@ -98,12 +98,28 @@ summary_df['max_break_all_day'] = summary_df['max_break_all_day'].apply(format_t
 summary_df['start_time'] = summary_df['start_time'].apply(format_time_only)
 summary_df['fifth_hour'] = summary_df['fifth_hour'].apply(format_time_only)
 
-
-
+total_employees_by_zone = employee_df.groupby('employee_zone')['employee_id'].nunique().reset_index()
+total_employees_by_zone.columns = ['employee_zone', 'total_employees']
 violations_only = summary_df[summary_df['violation'] == 'Violation']
 employees_with_violations = summary_df[summary_df['violation'] == 'Violation']['employee_id'].nunique()
 
+violations_with_zone = pd.merge(violations_only, employee_df[['employee_id', 'employee_zone']], on='employee_id', how='left')
+employees_with_violations_by_zone = violations_with_zone.groupby('employee_zone')['employee_id'].nunique().reset_index()
+employees_with_violations_by_zone.columns = ['employee_zone', 'employees_with_violations']
+zone_compliance = pd.merge(total_employees_by_zone, employees_with_violations_by_zone, on='employee_zone', how='left')
+zone_compliance['employees_with_violations'] = zone_compliance['employees_with_violations'].fillna(0)
+zone_compliance['violation_pct'] = (zone_compliance['employees_with_violations'] / zone_compliance['total_employees']) * 100
+zone_compliance['violation_pct'] = zone_compliance['violation_pct'].round(2)
 
 print(violations_only.head())
 print("Total Violations Found:", len(violations_only))
 print(f"Total employees with violations: {employees_with_violations}")
+print("\nPercentage of employees with violations by zone:")
+print(zone_compliance[['employee_zone', 'employees_with_violations', 'total_employees', 'violation_pct']])
+
+output_path = r'C:\Users\madel\Desktop\Data Portfolio\Labor Law Compliance\break_violation_summary.xlsx'
+with pd.ExcelWriter(output_path) as writer:
+    summary_df.to_excel(writer, sheet_name='Daily Summary', index=False)
+    violations_only.to_excel(writer, sheet_name='Violations Only', index=False)
+    zone_compliance.to_excel(writer, sheet_name='Zone Compliance', index=False)
+

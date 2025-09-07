@@ -20,10 +20,25 @@ Excel: Data cleaning through de-duplication, preliminary analysis using pivot ta
 Python: Pandas, datetime module, print to excel. <br>
 Tableau: Heatmap, Bar Chart, dashboard design. <br>
 
-## Results and Business Recommendations
-Over a two-week pay period, more than 1 in 5 employees (21.4%) missed a legally required break, with 144 violations spread across 72 individuals. These findings suggest systemic scheduling or time reporting issues that could lead to labor law exposure (fines, lawsuits, etc.). Broken down by employee_zone, SD North Coastal saw the highest rate of employees with violations (44.4%) despite having much fewer staff than SD South (18.2%). Five regions showed greater than average rates (IE Temecula, LA, OC Capistrano, SD North Coastal, and SD North Inland), implying the possibilty for targeted audits or coaching sessions in those particular zones, though it would be prudent to examine a much larger dataset to establish trends over time versus a single spike.  
-
-When evaluating how accurately employees recorded their time, the analysis revealed that 76% of the workforce (256 employees) had more than half of their appointments rendered exactly as scheduled. On average, each zone as about 83.8% of their total employees rendered with high noncompliance. Inland and LA regions inparticular have 100% of their employees render exactly as scheduled. This suggests that many employees may not be clocking in and out minute-for-minute, but rather entering time that matches their schedule. While this might appear compliant on paper, it likely masks the true time worked and may expose the organization to labor compliance risks. Accurate, minute-for-minute timekeeping is critical to meeting labor law standards and ensuring employees are compensated fairly for their actual work time.
+## Findings and Recommendations 
+### Over the two-week pay period (Jan 1–15):
+- 21.4% of employees (72 individuals) missed a legally required break, totaling 144 violations.
+These findings suggest systemic scheduling or time reporting issues that could expose the company to labor law risks (e.g., fines or lawsuits).
+- By employee_zone, SD North Coastal had the highest violation rate (44.4%), despite having significantly fewer staff than SD South (18.2%).
+Five regions showed above-average violation rates:
+- IE Temecula
+- LA
+- OC Capistrano
+- SD North Coastal
+-SD North Inland
+These zones may warrant targeted audits or training, though further analysis across multiple pay periods is recommended to confirm persistent trends.
+### Time Reporting Accuracy
+- 76% of the workforce (256 employees) rendered more than half of their appointments exactly as scheduled — rather than clocking in minute-for-minute.
+While this may look compliant on paper, it can mask the actual time worked and expose the company to labor law risks.
+- On average, 83.8% of employees per zone showed high levels of noncompliance with minute-for-minute accuracy.
+Notably, the Inland and LA regions had 100% of employees rendering time exactly as scheduled.
+- This suggests a cultural or operational habit of recording expected time rather than actual time worked.
+- Accurate, minute-for-minute timekeeping is essential for labor law compliance and fair compensation.
 
 ## Next Steps
 1. Repeat process across multiple pay periods.

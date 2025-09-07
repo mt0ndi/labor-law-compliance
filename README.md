@@ -28,11 +28,11 @@ In the first iteration of this project, we only used one pay period's worth of d
 These findings suggest systemic scheduling or time reporting issues that could expose the company to labor law risks (e.g., fines or lawsuits).
 - By employee_zone, SD North Coastal had the highest violation rate (44.4%), despite having significantly fewer staff than SD South (18.2%).
 - Five regions showed above-average violation rates:
- - IE Temecula
- - LA
- - OC Capistrano
- - SD North Coastal
- -SD North Inland
+ --  IE Temecula
+ --  LA
+ --  OC Capistrano
+ --  SD North Coastal
+ --  SD North Inland
 These zones may warrant targeted audits or training, though further analysis across multiple pay periods is recommended to confirm persistent trends.\
 - 76% of the workforce (256 employees) rendered more than half of their appointments exactly as scheduled — rather than clocking in minute-for-minute.
 While this may look compliant on paper, it can mask the actual time worked and expose the company to labor law risks.

@@ -32,7 +32,7 @@ These findings suggest systemic scheduling or time reporting issues that could e
   - LA
   - OC Capistrano
   - SD North Coastal
-  - SD North Inland
+  - SD North Inland /br
 These zones may warrant targeted audits or training, though further analysis across multiple pay periods is recommended to confirm persistent trends.\
 - 76% of the workforce (256 employees) rendered more than half of their appointments exactly as scheduled — rather than clocking in minute-for-minute.
 While this may look compliant on paper, it can mask the actual time worked and expose the company to labor law risks.
